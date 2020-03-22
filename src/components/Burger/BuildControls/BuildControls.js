@@ -2,15 +2,18 @@ import React from "react";
 import classes from "./BuildControls.module.css";
 import BuildControl from "./BuildControl/BuildControl";
 const controls = [
-    {label: "Salad", type: "salad"},
+    {label: "Salad", type: "Salad"},
     {label: "Bacon", type: "Bacon"},
     {label: "Cheese", type: "Cheese"},
     {label: "Meat", type: "Meat"},
 ]
 const buildControls = (props)=>(
     <div className={classes.BuildControls}>
+        <p>Current Price : <strong>{props.totalPrice.toFixed(2)}</strong></p>
 {controls.map(ctrl=>(
-   <BuildControl key={ctrl.label} label={ctrl.label}/>
+   <BuildControl moreClick={props.moreClick} lessClick={props.lessClick} key={ctrl.label} label={ctrl.label} type={ctrl.type}
+   disabled={props.disabled[ctrl.type]}
+   />
 ))}
     </div>
 )
