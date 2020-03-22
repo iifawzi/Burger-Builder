@@ -4,10 +4,10 @@ import Burger from "../../components/Burger/Burger"
 class BurgerBuilder extends Component {
     state = {
         ingredients: {
-            Salad : 1,
-            bacon: 1,
-            Cheese: 2,
-            meat: 2,
+            Salad : 0,
+            bacon: 0,
+            Cheese: 0,
+            meat: 0,
         }
     }
 render(){
