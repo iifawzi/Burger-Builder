@@ -1,15 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import Aux from "../../hoc/Aux"
 import classes from "./Layout.module.css"
 import Toolbar from "../Navigation/Toolbar/Toolbar"
-const layout = (props)=>(
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer"
+class Layout extends Component{ 
+    state = {
+        isMenuOpen: false,
+    }
+    ToggleWhenClick = ()=>{
+        const isMenuOpen = this.state.isMenuOpen;
+        this.setState({isMenuOpen: !isMenuOpen});
+    }
+    render (){
+        return(
     <Aux>
-    <Toolbar />
+    <Toolbar clicked={this.ToggleWhenClick} show={this.state.isMenuOpen} />
+    <SideDrawer show={this.state.isMenuOpen} clicked={this.ToggleWhenClick}/>
     <main className={classes.Content}>
-        {props.children}
+        {this.props.children}
     </main>
     </Aux>
 )
+    }
+}
 
-
-export default layout
+export default Layout
